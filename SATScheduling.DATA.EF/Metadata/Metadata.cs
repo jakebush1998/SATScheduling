@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace SATScheduling.DATA.EF.Models //.Metadata
 {
     #region Course
-    public class CoursesMetadata
+    public class CourseMetadata
     {
         public int CourseId { get; set; }
 
@@ -82,6 +82,7 @@ namespace SATScheduling.DATA.EF.Models //.Metadata
         [Display(Name = "Location")]
         public string Location { get; set; } = null!;
 
+      
         public int SCSID { get; set; }
     }
     #endregion

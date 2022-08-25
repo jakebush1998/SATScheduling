@@ -8,6 +8,8 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
+    <title>@ViewData["Title"] | SAT Scheduling</title>
+
     <!-- Favicon -->
     <link href="~/img/favicon.ico" rel="icon">
 
@@ -40,7 +42,8 @@
 
 
     <!-- Navbar Start -->
-    <div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid fixed-top px-0 wow fadeIn bg-dark shadow" data-wow-delay="0.1s">
+        @*<div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">*@
         <div class="top-bar text-white-50 row gx-0 align-items-center d-none d-lg-flex">
             <div class="col-lg-6 px-5 text-start">
                 <small><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</small>
@@ -81,7 +84,7 @@
                     <a asp-action="Index" asp-controller="Enrollments" class="nav-item nav-link">Enrollments</a>
                     <a asp-action="Index" asp-controller="ScheduledClasses" class="nav-item nav-link">Scheduled Classes</a>
                     <a asp-action="Index" asp-controller="Students" class="nav-item nav-link">Students</a>
-                    <a asp-action="Index" asp-controller="StudentStatuses" class="nav-item nav-link">Student Statuses</a>
+                    <a asp-action="Index" asp-controller="StudentStatus" class="nav-item nav-link">Student Statuses</a>
                     <a asp-action="Index" asp-controller="Contact" class="nav-item nav-link">Contact</a>
                 </div>
                 

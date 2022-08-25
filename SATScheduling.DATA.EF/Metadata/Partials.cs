@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 namespace SATScheduling.DATA.EF.Models//.Metadata
 {
     #region Course
-    [ModelMetadataType(typeof(CoursesMetadata))]
-    public partial class Courses { }
+    [ModelMetadataType(typeof(CourseMetadata))]
+    public partial class Course { }
     #endregion
 
     #region Enrollment
     [ModelMetadataType(typeof(EnrollmentMetadata))]
-    public partial class Enrollments { }
+    public partial class Enrollment { }
     #endregion
 
     #region ScheduledClass
