@@ -20,4 +20,6 @@ namespace SATScheduling.DATA.EF.Models
 
         public virtual ICollection<ScheduledClass> ScheduledClasses { get; set; }
     }
+
+   
 }
