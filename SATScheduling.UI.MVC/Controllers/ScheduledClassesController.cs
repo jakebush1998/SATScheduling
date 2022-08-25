@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SATScheduling.DATA.EF.Models;
 
 namespace SATScheduling.UI.MVC.Controllers
-{
+{   
+    
     public class ScheduledClassesController : Controller
     {
         private readonly SATContext _context;
@@ -18,13 +20,21 @@ namespace SATScheduling.UI.MVC.Controllers
             _context = context;
         }
 
+
+
         // GET: ScheduledClasses
+        [Authorize(Roles = "Scheduling")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var sATContext = _context.ScheduledClasses.Include(s => s.Course).Include(s => s.Scs);
             return View(await sATContext.ToListAsync());
         }
 
+
+
+        [Authorize(Roles = "Scheduling")]
+        [Authorize(Roles = "Admin")]
         // GET: ScheduledClasses/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -45,6 +55,8 @@ namespace SATScheduling.UI.MVC.Controllers
             return View(scheduledClass);
         }
 
+        [Authorize(Roles = "Scheduling")]
+        [Authorize(Roles = "Admin")]
         // GET: ScheduledClasses/Create
         public IActionResult Create()
         {
@@ -58,6 +70,8 @@ namespace SATScheduling.UI.MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Scheduling")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("ScheduledClassId,CourseId,StartDate,EndDate,InstructorName,Location,Scsid")] ScheduledClass scheduledClass)
         {
             if (ModelState.IsValid)
@@ -71,6 +85,8 @@ namespace SATScheduling.UI.MVC.Controllers
             return View(scheduledClass);
         }
 
+        [Authorize(Roles = "Scheduling")]
+        [Authorize(Roles = "Admin")]
         // GET: ScheduledClasses/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -89,11 +105,15 @@ namespace SATScheduling.UI.MVC.Controllers
             return View(scheduledClass);
         }
 
+
+
         // POST: ScheduledClasses/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Scheduling")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("ScheduledClassId,CourseId,StartDate,EndDate,InstructorName,Location,Scsid")] ScheduledClass scheduledClass)
         {
             if (id != scheduledClass.ScheduledClassId)
@@ -126,6 +146,7 @@ namespace SATScheduling.UI.MVC.Controllers
             return View(scheduledClass);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: ScheduledClasses/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -149,6 +170,7 @@ namespace SATScheduling.UI.MVC.Controllers
         // POST: ScheduledClasses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.ScheduledClasses == null)
