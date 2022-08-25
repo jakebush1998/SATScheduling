@@ -17,11 +17,6 @@ namespace SATScheduling.DATA.EF.Models//.Metadata
     public partial class Enrollments { }
     #endregion
 
-    #region SATContext
-    [ModelMetadataType(typeof(SATContextMetadata))]
-    public partial class SATContext { }
-    #endregion
-
     #region ScheduledClass
     [ModelMetadataType(typeof(ScheduledClassMetadata))]
     public partial class ScheduledClass { }
