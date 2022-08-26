@@ -23,8 +23,7 @@ namespace SATScheduling.UI.MVC.Controllers
 
 
         // GET: ScheduledClasses
-        [Authorize(Roles = "Scheduling")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Scheduling")]
         public async Task<IActionResult> Index()
         {
             var sATContext = _context.ScheduledClasses.Include(s => s.Course).Include(s => s.Scs);
@@ -33,8 +32,7 @@ namespace SATScheduling.UI.MVC.Controllers
 
 
 
-        [Authorize(Roles = "Scheduling")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Scheduling")]
         // GET: ScheduledClasses/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -55,8 +53,7 @@ namespace SATScheduling.UI.MVC.Controllers
             return View(scheduledClass);
         }
 
-        [Authorize(Roles = "Scheduling")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Scheduling")]
         // GET: ScheduledClasses/Create
         public IActionResult Create()
         {
@@ -70,8 +67,7 @@ namespace SATScheduling.UI.MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Scheduling")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Scheduling")]
         public async Task<IActionResult> Create([Bind("ScheduledClassId,CourseId,StartDate,EndDate,InstructorName,Location,Scsid")] ScheduledClass scheduledClass)
         {
             if (ModelState.IsValid)
@@ -85,8 +81,7 @@ namespace SATScheduling.UI.MVC.Controllers
             return View(scheduledClass);
         }
 
-        [Authorize(Roles = "Scheduling")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Scheduling")]
         // GET: ScheduledClasses/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -112,8 +107,7 @@ namespace SATScheduling.UI.MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Scheduling")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Scheduling")]
         public async Task<IActionResult> Edit(int id, [Bind("ScheduledClassId,CourseId,StartDate,EndDate,InstructorName,Location,Scsid")] ScheduledClass scheduledClass)
         {
             if (id != scheduledClass.ScheduledClassId)

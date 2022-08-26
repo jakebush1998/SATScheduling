@@ -10,8 +10,7 @@ using SATScheduling.DATA.EF.Models;
 
 namespace SATScheduling.UI.MVC.Controllers
 {
-    [Authorize(Roles = "Admin")]
-    [Authorize(Roles = "Scheduling")]
+    [Authorize(Roles = "Admin, Scheduling")]
     public class EnrollmentsController : Controller
     {
         private readonly SATContext _context;

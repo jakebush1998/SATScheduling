@@ -20,8 +20,7 @@ namespace SATScheduling.UI.MVC.Controllers
         }
 
         // GET: Students
-        [Authorize(Roles = "Scheduling")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Scheduling, Admin")]
         public async Task<IActionResult> Index()
         {
             var sATContext = _context.Students.Include(s => s.Ss);
@@ -29,8 +28,7 @@ namespace SATScheduling.UI.MVC.Controllers
         }
 
         // GET: Students/Details/5
-        [Authorize(Roles = "Scheduling")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Scheduling, Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Students == null)

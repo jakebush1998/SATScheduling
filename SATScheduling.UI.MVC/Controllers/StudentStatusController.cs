@@ -10,6 +10,7 @@ using SATScheduling.DATA.EF.Models;
 
 namespace SATScheduling.UI.MVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class StudentStatusController : Controller
     {
         private readonly SATContext _context;
@@ -19,9 +20,7 @@ namespace SATScheduling.UI.MVC.Controllers
             _context = context;
         }
 
-        // GET: StudentStatus
-
-        [Authorize(Roles = "Admin")]
+        // GET: StudentStatus        
         public async Task<IActionResult> Index()
         {
               return _context.StudentStatuses != null ? 
@@ -30,7 +29,6 @@ namespace SATScheduling.UI.MVC.Controllers
         }
 
         // GET: StudentStatus/Details/5
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.StudentStatuses == null)
@@ -49,7 +47,6 @@ namespace SATScheduling.UI.MVC.Controllers
         }
 
         // GET: StudentStatus/Create
-        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -60,7 +57,6 @@ namespace SATScheduling.UI.MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Ssid,Ssname,Ssdescription")] StudentStatus studentStatus)
         {
             if (ModelState.IsValid)
@@ -73,7 +69,6 @@ namespace SATScheduling.UI.MVC.Controllers
         }
 
         // GET: StudentStatus/Edit/5
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.StudentStatuses == null)
@@ -94,7 +89,6 @@ namespace SATScheduling.UI.MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Ssid,Ssname,Ssdescription")] StudentStatus studentStatus)
         {
             if (id != studentStatus.Ssid)
@@ -126,7 +120,6 @@ namespace SATScheduling.UI.MVC.Controllers
         }
 
         // GET: StudentStatus/Delete/5
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.StudentStatuses == null)
@@ -147,7 +140,6 @@ namespace SATScheduling.UI.MVC.Controllers
         // POST: StudentStatus/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.StudentStatuses == null)
